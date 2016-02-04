@@ -1,16 +1,13 @@
 $:.unshift File.expand_path("../lib", __FILE__)
 
-require 'rake'
 require 'snmp/version'
 
-PKG_FILES = FileList[
-    'Rakefile',
-    'README.rdoc',
-    'lib/**/*.rb',
-    'test/**/test*.rb',
-    'test/**/*.yaml',
-    'examples/*.rb',
-    'data/**/*.yaml']
+PKG_FILES = ['Rakefile', 'README.rdoc'] +
+            Dir['lib/**/*.rb'] +
+            Dir['test/**/test*.rb'] +
+            Dir['test/**/*.yaml'] +
+            Dir['examples/*.rb'] +
+            Dir['data/**/*.yaml']
 
 Gem::Specification.new do |s|
     s.platform = Gem::Platform::RUBY
