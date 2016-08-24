@@ -108,6 +108,20 @@ class TestWalk < MiniTest::Unit::TestCase
 
 
   ##
+  # Varbinds yielded by #walk are not modified after they are yielded
+  #
+  def test_single_object_not_modified
+    varbinds = []
+    values = []
+    ifTable6_manager.walk("ifDescr") do |vb|
+      varbinds << vb
+      values << vb.value
+    end
+    assert_equal(values, varbinds.map(&:value))
+  end
+
+
+  ##
   # If a list of one element is passed to walk() then a list of
   # one element is passed as the block parameter.
   #

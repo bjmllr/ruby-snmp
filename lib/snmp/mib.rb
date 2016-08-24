@@ -204,6 +204,7 @@ module SNMP
 
     def apply_option(varbind, option)
       if option == :NullValue
+        varbind = varbind.dup
         varbind.value = Null
       elsif option != :KeepValue
         raise ArgumentError, "invalid option: #{option.to_s}", caller
